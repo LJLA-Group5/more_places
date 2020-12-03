@@ -39,19 +39,20 @@ npm install
 ```
 ## CRUD
 
-  - Create
+  ## Create
     * Method: post
     * Endpoint: '/api/create'
     * Path params: { id: '100'}
     * Request body: *new listing object*
     * Response object: status code 201
 
-  - Read
+  ## Read
     * Method: get
     * Endpoint: '/api/:id/places'
     * Path params: { id: '1'}
     * Request body: n/a
     * Response object:
+```sh
 [
     {
         "_id": "5fc6e1d8b36b73c0a9e31e77",
@@ -218,15 +219,16 @@ npm install
         "__v": 0
     }
 ]
+```
 
-  - Update
+  ## Update
     * Method: patch
     * Endpoint: '/api/:id/places'
     * Path params: { id: '1'}
     * Request body: n/a *will update more_places array with a list of new places*
     * Response object: status code 200
 
-  - Delete
+  ## Delete
     * Method: delete
     * Endpoint:  '/api/:id/places'
     * Path params: { id: '100' }
