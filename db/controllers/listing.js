@@ -28,6 +28,9 @@ const updateOne = (id, callback) => {
 //function to delete a listing
 
 //function to create a listing
+const createOne = () => {
+
+}
 
 module.exports = {
   ListingModel,

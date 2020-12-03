@@ -50,6 +50,22 @@ const morePlaces = () => {
   return list;
 };
 
+const create = (id) => {
+  const newListing = new ListingModel({
+    listingID: id,
+    listingName: faker.address.streetName(),
+    morePlacesID: morePlaces(),
+  });
+  ListingModel.create(newListing, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      mongoose.disconnect();
+    }
+  });
+};
+
 module.exports = {
   morePlaces,
+  create,
 };

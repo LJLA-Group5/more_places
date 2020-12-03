@@ -5,10 +5,17 @@ const listingController = require('../../db/controllers/listing.js');
 const router = express.Router();
 
 //create
+router.route('/api/create')
+  .post((req,res) => {
+    console.log(req.body);
+    res.status(201).send(req.body);
+  });
+
 
 //read
 router.route('/api/:id/places')
   .get((req, res) => {
+    console.log(req.body)
     const { id } = req.params;
     listingController.findOne(id, (err, data) => {
       if (err) {
