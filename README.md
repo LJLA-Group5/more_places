@@ -40,13 +40,15 @@ npm install
 ## CRUD
 
   ## Create
+    - Description: create a new recommendation for a given listing
     - Method: post
-    - Endpoint: '/api/create'
-    - Path params: { id: '100'}
-    - Request body: *new listing object*
+    - Endpoint: '/api/:id/places'
+    - Path params: { id: '1' }
+    - Request body: { id: '100' }
     - Response object: status code 201
 
   ## Read
+    - Description: return suggested listings (upto 12) for given listing
     - Method: get
     - Endpoint: '/api/:id/places'
     - Path params: { id: '1'}
@@ -222,13 +224,15 @@ npm install
 ```
 
   ## Update
+    - Description: update rank/order of recommendations for given listing
     - Method: patch
     - Endpoint: '/api/:id/places'
     - Path params: { id: '1'}
-    - Request body: n/a *will update more_places array with a list of new places*
+    - Request body: n/a *will update the rank/order of more_places associated with given listing*
     - Response object: status code 200
 
   ## Delete
+    - Description: will delete a recommendation for a given listing
     - Method: delete
     - Endpoint:  '/api/:id/places'
     - Path params: { id: '100' }
