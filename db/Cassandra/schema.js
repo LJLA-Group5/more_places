@@ -1,26 +1,53 @@
-CREATE TABLE listings (
-  listingID uuid,
+//details associated with listing
+CREATE KEYSPACE listings WITH replication = {‘class’:
+  ‘SimpleStrategy’, ‘replication_factor’ : 1};
+
+CREATE TYPE listings.details (
   pictureURL text,
   locationName text,
-  liked BOOLEAN,
   score varint,
   reviewCount varint,
   roomType text,
   roomName text,
   bedCount varint,
   costPerNight varint,
-  PRIMARY KEY (listingID)
-)
+);
 
-// CREATE TABLE more_places (
-//   listingID uuid,
-//   more_places SET<INT>,
-//   PRIMARY KEY (listingID)
-// )
-
-CREATE TABLE more_places (
+//creates relationship between a listing and more places recommendations for that listing
+CREATE TABLE listings.more_places_by_listing (
   listingID int,
   more_places int,
+  places_detail frozen<details>,
   rank int,
-  PRIMARY KEY ((listingID, more_places), rank)
-)
+  PRIMARY KEY ((listingID), rank)
+  AND CLUSTERING ORDER BY (rank ASC)
+  WITH comment = 'find all recommendated listing by listingID'
+);
+
+//creates users
+CREATE TABLE listings.users (
+  userID int,
+  name text,
+  PRIMARY KEY (ID)
+  WITH comment = 'find a user from user ID'
+);
+
+//list names for a given user
+//look into types
+CREATE TABLE listings.listNames_by_user (
+  userID int,
+  listID int,
+  listName text,
+  PRIMARY KEY (userID)
+  WITH comment = 'find all lists for a given user'
+);
+
+//tells if a listing is in a given listID
+//listID are unique for a given user+listName
+CREATE TABLE listings.listings_list (
+  listID int,
+  listingID int,
+  places_detail frozen<details>,
+  PRIMARY KEY (listID)
+  WITH comment = 'find all listings in a given list'
+);
