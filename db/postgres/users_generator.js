@@ -5,16 +5,18 @@ const path = require('path');
 const writeUsers = fs.createWriteStream(
   path.join(__dirname, '/data/users_data.csv')
 );
-writeUsers.write('name\n', 'utf8');
+writeUsers.write('id, name\n', 'utf8');
 
 function writeTenMillionUsers(writer, encoding, callback) {
   let i = 10000000;
+  let id = 0;
   function write() {
     let ok = true;
     do {
       i -= 1;
+      id += 1;
       const name = faker.internet.userName();
-      const data = `${name}\n`;
+      const data = `${id}, ${name}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
