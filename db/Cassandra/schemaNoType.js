@@ -14,43 +14,39 @@ CREATE TABLE listings.more_places_by_listing (
   reviewCount varint,
   roomName text,
   roomType text,
-  score varint,
+  score text,
   PRIMARY KEY ((listingID), rank)
 );
 //WITH comment = 'find all recommendated listing by listingID'
 
-//creates users. reuse postgres data
+//creates users
 CREATE TABLE listings.users (
   name text,
   userID int,
-  PRIMARY KEY (ID)
-  WITH comment = 'find a user from user ID'
+  PRIMARY KEY (userID)
 );
+//WITH comment = 'find a user from user ID'
 
 //list names for a given user. reuse postgres data
 //look into types
-CREATE TABLE listings.listNames_by_user (
-  listID int,
-  listName text,
-  userID int,
-  PRIMARY KEY (userID)
-  WITH comment = 'find all lists for a given user'
-);
+
+//WITH comment = 'find all lists for a given user'
 
 //tells if a listing is in a given listID
 //listID are unique for a given user+listName
-CREATE TABLE listings.listings_list (
+CREATE TABLE listings.user_faves (
   bedCount varint,
   costPerNight varint,
-  listID int,
+  listID text,
+  listName text,
   listingID int,
   locationName text,
   pictureURL text,
   reviewCount varint,
   roomName text,
   roomType text,
-  score varint,
+  score text,
   userID int,
   PRIMARY KEY (listID)
-  WITH comment = 'find all listings in a given list'
 );
+//WITH comment = 'find all listings in a given list'
