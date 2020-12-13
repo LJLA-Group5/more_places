@@ -21,7 +21,7 @@ router.route('/api/create')
   });
 
 //read
-router.route('/api/:id/places/new')
+router.route('/api/:id/places')
   .get((req, res) => {
     console.log(req.body)
     const { id } = req.params;
@@ -29,13 +29,13 @@ router.route('/api/:id/places/new')
       if (err) {
         res.status(404).send({ msg: err });
       } else {
-        res.status(200).json({"morePlacesID": data.rows });
+        res.status(200).json([{"morePlacesID": data.rows }]);
       }
     });
   });
 
 //old routing to mongoDB
-router.route('/api/:id/places')
+router.route('/api/:id/places/old')
   .get((req, res) => {
     console.log(req.body)
     const { id } = req.params;

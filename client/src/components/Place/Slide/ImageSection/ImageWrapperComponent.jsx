@@ -55,7 +55,7 @@ const ImageWrapperInnerBot2nd = styled.div`
 
 `;
 const ImageWrapperComponent = ({props}) => {
-  const {pictureURL} = props.place;
+  const {pictureurl} = props.place;
   return (
     <ImageWrapper
       aria-busy='false'>
@@ -63,7 +63,7 @@ const ImageWrapperComponent = ({props}) => {
         <Image
           loading='lazy'
           aria-hidden='true'
-          src={pictureURL}
+          src={pictureurl}
         >
         </Image>
         <ImageWrapperInnerBot>
