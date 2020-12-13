@@ -31,3 +31,6 @@ build/
 dist/
 data/
 keys/
+
+# Files
+newrelic.js

@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const listingController = require('../../db/controllers/listing.js');
 const cassandra = require('cassandra-driver');
