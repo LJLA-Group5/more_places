@@ -1,5 +1,14 @@
 const express = require('express');
 const listingController = require('../../db/controllers/listing.js');
+const cassandra = require('cassandra-driver');
+
+const client = new cassandra.Client({
+  contactPoints: ['127.0.0.1'],
+  localDataCenter: 'datacenter1' });
+
+client.connect((err, result) => {
+  console.log('index: cassandra conneted');
+});
 
 // create a route handler
 const router = express.Router();
@@ -11,15 +20,28 @@ router.route('/api/create')
     res.status(201).send(req.body);
   });
 
-
 //read
+router.route('/api/:id/places/new')
+  .get((req, res) => {
+    console.log(req.body)
+    const { id } = req.params;
+    client.execute(`SELECT * FROM listings.more_places_by_listing WHERE listingID = ${id}`,[], (err, data) => {
+      if (err) {
+        res.status(404).send({ msg: err });
+      } else {
+        res.status(200).json({"morePlacesID": data.rows });
+      }
+    });
+  });
+
+//old routing to mongoDB
 router.route('/api/:id/places')
   .get((req, res) => {
     console.log(req.body)
     const { id } = req.params;
     listingController.findOne(id, (err, data) => {
       if (err) {
-        console.log(err);
+        res.status(404).send({ msg: err });
       } else {
         res.status(200).json(data);
       }
