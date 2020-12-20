@@ -37,7 +37,7 @@ const RoomNameSectionWrapper = styled.div`
 
 const SlideContainerComponent = ({props, handleLike}) => {
   const {listingID} = props.place;
-  const {roomName} = props.place;
+  const {roomname} = props.place;
   const path = window.location.href;
   let port = path.includes('3000') ? '3000' : '3004';
   return (
@@ -78,7 +78,7 @@ const SlideContainerComponent = ({props, handleLike}) => {
           props={props}>
         </RoomAndBedSectionComponent>
         <RoomNameSectionWrapper>
-          {roomName}
+          {roomname}
         </RoomNameSectionWrapper>
         <CostSectionComponent
           props={props}>

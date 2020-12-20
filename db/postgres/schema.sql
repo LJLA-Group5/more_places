@@ -17,10 +17,17 @@ CREATE TABLE listings (
 
 CREATE TABLE more_places_by_listing (
   ID INT PRIMARY KEY,
-  listingID INT references listings(listingID),
-  suggestionID INT references listings(listingID),
+  listingID INT,
+  suggestionID INT,
   rank INT
 );
+
+-- CREATE TABLE more_places_by_listing (
+--   ID INT PRIMARY KEY,
+--   listingID INT references listings(listingID),
+--   suggestionID INT references listings(listingID),
+--   rank INT
+-- );
 
 CREATE TABLE users (
   ID INT PRIMARY KEY,
@@ -30,11 +37,23 @@ CREATE TABLE users (
 CREATE TABLE listNames_by_user (
   ID INT PRIMARY KEY,
   listName VARCHAR(100) NOT NULL,
-  userID text references users(ID)
+  userID INT
 );
+
+-- CREATE TABLE listNames_by_user (
+--   ID INT PRIMARY KEY,
+--   listName VARCHAR(100) NOT NULL,
+--   userID INT references users(ID)
+-- );
 
 CREATE TABLE listings_list (
   ID INT PRIMARY KEY,
-  listID INT references list(ID),
-  listingID INT references listings(listingID)
+  listID INT,
+  listingID INT
 );
+
+-- CREATE TABLE listings_list (
+--   ID INT PRIMARY KEY,
+--   listID INT references listNames_by_user(ID),
+--   listingID INT references listings(listingID)
+-- );

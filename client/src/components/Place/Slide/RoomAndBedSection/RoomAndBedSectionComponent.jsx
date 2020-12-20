@@ -17,8 +17,8 @@ const RoomAndBedSectionWrapper = styled.div`
 `;
 
 const RoomAndBedSectionComponent = ({props}) => {
-  const {roomType} = props.place;
-  const {bedCount} = props.place;
+  const {roomtype} = props.place;
+  const {bedcount} = props.place;
   return (
     <RoomAndBedSectionWrapper>
       <ol className='roomAndBedSection' style={{
@@ -28,7 +28,7 @@ const RoomAndBedSectionComponent = ({props}) => {
         <li className='roomSection' style={{
           display: 'inline-block'
         }}>
-          {roomType}
+          {roomtype}
         </li>
         <li className='bedSection' style={{
           display: 'inline-block'
@@ -36,7 +36,7 @@ const RoomAndBedSectionComponent = ({props}) => {
           <span>
             &nbsp;&middot;&nbsp;
           </span>
-          {bedCount}
+          {bedcount}
         </li>
       </ol>
     </RoomAndBedSectionWrapper>

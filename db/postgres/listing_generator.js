@@ -11,7 +11,7 @@ const writeListings = fs.createWriteStream(
 writeListings.write('listingID, pictureURL, locationName, score, reviewCount, roomType, roomName, bedCount, costPerNight\n', 'utf8');
 
 function writeTenMillionListings(writer, encoding, callback) {
-  let i = 10;
+  let i = 10000000;
   let id = 0;
 
   function write() {
